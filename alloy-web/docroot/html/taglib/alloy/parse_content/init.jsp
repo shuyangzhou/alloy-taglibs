@@ -19,9 +19,9 @@
 <%@ include file="/html/taglib/taglib-init.jsp" %>
 
 <%
-boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:parse-content:destroyed")), false);
+boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:parse-content:destroyed")));
 java.lang.Object host = (java.lang.Object)request.getAttribute("alloy:parse-content:host");
-boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:parse-content:initialized")), false);
+boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:parse-content:initialized")));
 java.lang.Object afterDestroy = (java.lang.Object)request.getAttribute("alloy:parse-content:afterDestroy");
 java.lang.Object afterDestroyedChange = (java.lang.Object)request.getAttribute("alloy:parse-content:afterDestroyedChange");
 java.lang.Object afterHostChange = (java.lang.Object)request.getAttribute("alloy:parse-content:afterHostChange");
@@ -33,10 +33,11 @@ java.lang.Object onHostChange = (java.lang.Object)request.getAttribute("alloy:pa
 java.lang.Object onInit = (java.lang.Object)request.getAttribute("alloy:parse-content:onInit");
 java.lang.Object onInitializedChange = (java.lang.Object)request.getAttribute("alloy:parse-content:onInitializedChange");
 Map<String, Object> dynamicAttributes = (Map<String, Object>)request.getAttribute("alloy:parse-content:dynamicAttributes");
-Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:parse-content:scopedAttributes");
 %>
 
 <%
+Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:parse-content:scopedAttributes");
+
 Map<String, Object> _options = new HashMap<String, Object>();
 
 if ((scopedAttributes != null) && !scopedAttributes.isEmpty()) {

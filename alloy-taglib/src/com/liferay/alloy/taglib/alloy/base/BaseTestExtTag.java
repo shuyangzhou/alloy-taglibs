@@ -38,8 +38,6 @@ public abstract class BaseTestExtTag extends com.liferay.taglib.util.IncludeTag 
 
 	public void setTest(java.lang.String test) {
 		_test = test;
-
-		setScopedAttribute("test", test);
 	}
 
 	@Override
@@ -56,7 +54,7 @@ public abstract class BaseTestExtTag extends com.liferay.taglib.util.IncludeTag 
 
 	@Override
 	protected void setAttributes(HttpServletRequest request) {
-		setNamespacedAttribute(request, "test", _test);
+		request.setAttribute("alloy:test-ext:test", _test);
 	}
 
 	protected static final String _ATTRIBUTE_NAMESPACE = "alloy:test-ext:";

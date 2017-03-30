@@ -76,6 +76,10 @@ public class TagBuilder {
 			String tldDir)
 		throws Exception {
 
+		if (FileUtil.getFile() == null) {
+			(new FileUtil()).setFile(new FileImpl());
+		}
+
 		if (PropsUtil.getProps() == null) {
 			PropsUtil.setProps(new PropsImpl());
 		}
@@ -611,10 +615,6 @@ public class TagBuilder {
 	}
 
 	protected void writeFile(File file, String content, boolean overwrite) {
-		if (FileUtil.getFile() == null) {
-			(new FileUtil()).setFile(new FileImpl());
-		}
-
 		try {
 			if (overwrite || !file.exists()) {
 				String oldContent = StringPool.BLANK;
@@ -751,7 +751,16 @@ public class TagBuilder {
 
 				StringBuilder sb = new StringBuilder();
 
-				sb.append(_javaDir);
+				int i = _javaDir.lastIndexOf("/servlet");
+
+				if (i == -1) {
+					sb.append(_javaDir);
+				}
+				else {
+					sb.append(_javaDir, 0, i);
+					sb.append("/internal/servlet/");
+				}
+
 				sb.append(_SERVLET_CONTEXT_UTIL);
 				sb.append(_CLASS_SUFFIX);
 
@@ -786,6 +795,8 @@ public class TagBuilder {
 	}
 
 	private void _createTld() throws Exception {
+		_removeOldTld();
+
 		Map<String, Object> context = getDefaultTemplateContext();
 
 		for (Document doc : _componentsExtDoc) {
@@ -808,7 +819,7 @@ public class TagBuilder {
 			context.put("components", getComponents(doc));
 
 			String tldFilePath = _tldDir.concat(
-				getTldFileName(shortName)).concat(_TLD_EXTENSION);
+				_getTldFileName(shortName)).concat(_TLD_EXTENSION);
 
 			File tldFile = new File(tldFilePath);
 
@@ -826,12 +837,30 @@ public class TagBuilder {
 		}
 	}
 
-	private String getTldFileName(String tldFileName) {
+	private String _getTldFileName(String tldFileName) {
 		if (tldFileName.equals(_AUI)) {
 			return tldFileName = _LIFERAY + StringPool.DASH + tldFileName;
 		}
 		else {
 			return tldFileName;
+		}
+	}
+
+	private void _removeOldTld() {
+		for (Document doc : _componentsExtDoc) {
+			Element root = doc.getRootElement();
+
+			String shortName = GetterUtil.getString(
+				root.attributeValue("short-name"), _DEFAULT_TAGLIB_SHORT_NAME);
+
+			String tldFilePath = _tldDir.concat(
+				_getTldFileName(shortName)).concat(_TLD_EXTENSION);
+
+			File tldFile = new File(tldFilePath);
+
+			if (tldFile.exists()) {
+				FileUtil.delete(tldFile);
+			}
 		}
 	}
 

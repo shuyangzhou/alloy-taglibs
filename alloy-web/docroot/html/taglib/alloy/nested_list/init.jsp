@@ -19,8 +19,8 @@
 <%@ include file="/html/taglib/taglib-init.jsp" %>
 
 <%
-boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:nested-list:destroyed")), false);
-boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:nested-list:initialized")), false);
+boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:nested-list:destroyed")));
+boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:nested-list:initialized")));
 java.lang.Object afterDestroy = (java.lang.Object)request.getAttribute("alloy:nested-list:afterDestroy");
 java.lang.Object afterDestroyedChange = (java.lang.Object)request.getAttribute("alloy:nested-list:afterDestroyedChange");
 java.lang.Object afterInit = (java.lang.Object)request.getAttribute("alloy:nested-list:afterInit");
@@ -30,10 +30,11 @@ java.lang.Object onDestroyedChange = (java.lang.Object)request.getAttribute("all
 java.lang.Object onInit = (java.lang.Object)request.getAttribute("alloy:nested-list:onInit");
 java.lang.Object onInitializedChange = (java.lang.Object)request.getAttribute("alloy:nested-list:onInitializedChange");
 Map<String, Object> dynamicAttributes = (Map<String, Object>)request.getAttribute("alloy:nested-list:dynamicAttributes");
-Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:nested-list:scopedAttributes");
 %>
 
 <%
+Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:nested-list:scopedAttributes");
+
 Map<String, Object> _options = new HashMap<String, Object>();
 
 if ((scopedAttributes != null) && !scopedAttributes.isEmpty()) {

@@ -66,50 +66,34 @@ public abstract class BaseComponentTag extends com.liferay.taglib.util.IncludeTa
 
 	public void setDefineVar(boolean defineVar) {
 		_defineVar = defineVar;
-
-		setScopedAttribute("defineVar", defineVar);
 	}
 
 	public void setExcludeAttributes(java.lang.String excludeAttributes) {
 		_excludeAttributes = excludeAttributes;
-
-		setScopedAttribute("excludeAttributes", excludeAttributes);
 	}
 
 	public void setJavaScriptAttributes(java.lang.String javaScriptAttributes) {
 		_javaScriptAttributes = javaScriptAttributes;
-
-		setScopedAttribute("javaScriptAttributes", javaScriptAttributes);
 	}
 
 	public void setTagPageContext(java.lang.Object tagPageContext) {
 		_tagPageContext = tagPageContext;
-
-		setScopedAttribute("tagPageContext", tagPageContext);
 	}
 
 	public void setVar(java.lang.String var) {
 		_var = var;
-
-		setScopedAttribute("var", var);
 	}
 
 	public void setModule(java.lang.String module) {
 		_module = module;
-
-		setScopedAttribute("module", module);
 	}
 
 	public void setName(java.lang.String name) {
 		_name = name;
-
-		setScopedAttribute("name", name);
 	}
 
 	public void setOptions(java.util.Map options) {
 		_options = options;
-
-		setScopedAttribute("options", options);
 	}
 
 	@Override
@@ -133,14 +117,14 @@ public abstract class BaseComponentTag extends com.liferay.taglib.util.IncludeTa
 
 	@Override
 	protected void setAttributes(HttpServletRequest request) {
-		setNamespacedAttribute(request, "defineVar", _defineVar);
-		setNamespacedAttribute(request, "excludeAttributes", _excludeAttributes);
-		setNamespacedAttribute(request, "javaScriptAttributes", _javaScriptAttributes);
-		setNamespacedAttribute(request, "tagPageContext", _tagPageContext);
-		setNamespacedAttribute(request, "var", _var);
-		setNamespacedAttribute(request, "module", _module);
-		setNamespacedAttribute(request, "name", _name);
-		setNamespacedAttribute(request, "options", _options);
+		request.setAttribute("alloy_util:component:defineVar", String.valueOf(_defineVar));
+		request.setAttribute("alloy_util:component:excludeAttributes", _excludeAttributes);
+		request.setAttribute("alloy_util:component:javaScriptAttributes", _javaScriptAttributes);
+		request.setAttribute("alloy_util:component:tagPageContext", _tagPageContext);
+		request.setAttribute("alloy_util:component:var", _var);
+		request.setAttribute("alloy_util:component:module", _module);
+		request.setAttribute("alloy_util:component:name", _name);
+		request.setAttribute("alloy_util:component:options", _options);
 	}
 
 	protected static final String _ATTRIBUTE_NAMESPACE = "alloy_util:component:";

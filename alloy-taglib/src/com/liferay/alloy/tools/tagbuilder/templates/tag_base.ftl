@@ -4,7 +4,7 @@
 <#if component.isComponentTaglibOSGIModule() == true>
 package ${packagePath}.taglib.base;
 
-import ${packagePath}.ServletContextUtil;
+import ${packagePath?keep_before_last(".servlet")}.internal.servlet.ServletContextUtil;
 
 <#else>
 package ${packagePath}.${component.getPackage()}.base;
@@ -55,7 +55,7 @@ public abstract class Base${component.getClassName()} extends ${component.getPar
 	</#if>
 	public void set${attribute.getCapitalizedName()}(${attribute.getRawInputType()} ${attribute.getSafeName()}) {
 		_${attribute.getSafeName()} = ${attribute.getSafeName()};
-		<#if typeUtil.hasMethod(component.getParentClass(), "setScopedAttribute", ["java.lang.String", "java.lang.Object"]) == true>
+		<#if component.isAlloyComponent() && typeUtil.hasMethod(component.getParentClass(), "setScopedAttribute", ["java.lang.String", "java.lang.Object"]) == true>
 
 		setScopedAttribute("${attribute.getSafeName()}", ${attribute.getSafeName()});
 		</#if>
@@ -138,7 +138,12 @@ public abstract class Base${component.getClassName()} extends ${component.getPar
 	protected void setAttributes(HttpServletRequest request) {
 		<#list component.getAttributesAndEvents() as attribute>
 		<#if typeUtil.hasMethod(component.getParentClass(), "setNamespacedAttribute", ["javax.servlet.http.HttpServletRequest", "java.lang.String", "java.lang.Object"]) == true>
-		setNamespacedAttribute(request, "${attribute.getSafeName()}", _${attribute.getSafeName()});
+			<#assign outputSimpleClassName = attribute.getOutputTypeSimpleClassName()>
+			<#if outputSimpleClassName == "boolean" || isNumericPrimitiveType(outputSimpleClassName)>
+		request.setAttribute("${namespace}${attribute.getName()}", String.valueOf(_${attribute.getSafeName()}));
+			<#else>
+		request.setAttribute("${namespace}${attribute.getName()}", _${attribute.getSafeName()});
+			</#if>
 		<#else>
 		request.setAttribute("${attribute.getName()}", _${attribute.getSafeName()});
 		</#if>

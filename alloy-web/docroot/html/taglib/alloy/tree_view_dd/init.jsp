@@ -22,14 +22,14 @@
 java.lang.String checkContainerEl = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:checkContainerEl"));
 java.lang.String checkEl = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:checkEl"));
 java.lang.String checkName = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:checkName"), "tree-node-check");
-boolean checked = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:checked")), false);
+boolean checked = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:checked")));
 java.util.ArrayList children = _toArrayList(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view-dd:children"), "[]"));
 java.lang.String container = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:container"));
-boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:destroyed")), false);
+boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:destroyed")));
 java.lang.String dropAction = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:dropAction"));
 java.lang.String helper = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view-dd:helper"));
 java.util.HashMap index = _toHashMap(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view-dd:index"), "{}"));
-boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:initialized")), false);
+boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view-dd:initialized")));
 java.util.HashMap io = _toHashMap(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view-dd:io")));
 java.lang.Object lastSelected = (java.lang.Object)request.getAttribute("alloy:tree-view-dd:lastSelected");
 java.lang.Number lastY = GetterUtil.getNumber(String.valueOf(request.getAttribute("alloy:tree-view-dd:lastY")), 0);
@@ -75,10 +75,11 @@ java.lang.Object onNodeContentChange = (java.lang.Object)request.getAttribute("a
 java.lang.Object onScrollDelayChange = (java.lang.Object)request.getAttribute("alloy:tree-view-dd:onScrollDelayChange");
 java.lang.Object onTypeChange = (java.lang.Object)request.getAttribute("alloy:tree-view-dd:onTypeChange");
 Map<String, Object> dynamicAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view-dd:dynamicAttributes");
-Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view-dd:scopedAttributes");
 %>
 
 <%
+Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view-dd:scopedAttributes");
+
 Map<String, Object> _options = new HashMap<String, Object>();
 
 if ((scopedAttributes != null) && !scopedAttributes.isEmpty()) {

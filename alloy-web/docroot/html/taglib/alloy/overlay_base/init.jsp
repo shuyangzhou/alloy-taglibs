@@ -25,20 +25,20 @@ java.lang.Object overlaybaseBodyContent = (java.lang.Object)request.getAttribute
 java.lang.Object centered = (java.lang.Object)request.getAttribute("alloy:overlay-base:centered");
 java.lang.Object constrain = (java.lang.Object)request.getAttribute("alloy:overlay-base:constrain");
 java.lang.String cssClass = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:overlay-base:cssClass"));
-boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:destroyed")), false);
-boolean disabled = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:disabled")), false);
+boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:destroyed")));
+boolean disabled = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:disabled")));
 java.lang.Object fillHeight = (java.lang.Object)request.getAttribute("alloy:overlay-base:fillHeight");
-boolean focused = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:focused")), false);
+boolean focused = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:focused")));
 java.lang.Object footerContent = (java.lang.Object)request.getAttribute("alloy:overlay-base:footerContent");
 java.lang.Object headerContent = (java.lang.Object)request.getAttribute("alloy:overlay-base:headerContent");
 java.lang.Object height = (java.lang.Object)request.getAttribute("alloy:overlay-base:height");
 java.lang.String hideClass = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:overlay-base:hideClass"), "aui-helper-hidden");
 java.lang.String overlaybaseId = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:overlay-base:overlaybaseId"));
-boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:initialized")), false);
-boolean preventOverlap = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:preventOverlap")), false);
+boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:initialized")));
+boolean preventOverlap = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:preventOverlap")));
 java.lang.Object render = (java.lang.Object)request.getAttribute("alloy:overlay-base:render");
-boolean rendered = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:rendered")), false);
-boolean shim = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:shim")), false);
+boolean rendered = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:rendered")));
+boolean shim = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:shim")));
 java.util.HashMap strings = _toHashMap(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:overlay-base:strings")));
 java.lang.Number tabIndex = GetterUtil.getNumber(String.valueOf(request.getAttribute("alloy:overlay-base:tabIndex")), 0);
 boolean useARIA = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:overlay-base:useARIA")), true);
@@ -121,10 +121,11 @@ java.lang.Object onXyChange = (java.lang.Object)request.getAttribute("alloy:over
 java.lang.Object onYChange = (java.lang.Object)request.getAttribute("alloy:overlay-base:onYChange");
 java.lang.Object onZIndexChange = (java.lang.Object)request.getAttribute("alloy:overlay-base:onZIndexChange");
 Map<String, Object> dynamicAttributes = (Map<String, Object>)request.getAttribute("alloy:overlay-base:dynamicAttributes");
-Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:overlay-base:scopedAttributes");
 %>
 
 <%
+Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:overlay-base:scopedAttributes");
+
 Map<String, Object> _options = new HashMap<String, Object>();
 
 if ((scopedAttributes != null) && !scopedAttributes.isEmpty()) {

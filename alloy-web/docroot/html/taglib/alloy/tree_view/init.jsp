@@ -21,9 +21,9 @@
 <%
 java.util.ArrayList children = _toArrayList(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view:children"), "[]"));
 java.lang.String container = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view:container"));
-boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view:destroyed")), false);
+boolean destroyed = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view:destroyed")));
 java.util.HashMap index = _toHashMap(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view:index"), "{}"));
-boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view:initialized")), false);
+boolean initialized = GetterUtil.getBoolean(String.valueOf(request.getAttribute("alloy:tree-view:initialized")));
 java.util.HashMap io = _toHashMap(GetterUtil.getObject((java.lang.Object)request.getAttribute("alloy:tree-view:io")));
 java.lang.Object lastSelected = (java.lang.Object)request.getAttribute("alloy:tree-view:lastSelected");
 java.lang.String type = GetterUtil.getString((java.lang.String)request.getAttribute("alloy:tree-view:type"), "file");
@@ -48,10 +48,11 @@ java.lang.Object onIoChange = (java.lang.Object)request.getAttribute("alloy:tree
 java.lang.Object onLastSelectedChange = (java.lang.Object)request.getAttribute("alloy:tree-view:onLastSelectedChange");
 java.lang.Object onTypeChange = (java.lang.Object)request.getAttribute("alloy:tree-view:onTypeChange");
 Map<String, Object> dynamicAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view:dynamicAttributes");
-Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view:scopedAttributes");
 %>
 
 <%
+Map<String, Object> scopedAttributes = (Map<String, Object>)request.getAttribute("alloy:tree-view:scopedAttributes");
+
 Map<String, Object> _options = new HashMap<String, Object>();
 
 if ((scopedAttributes != null) && !scopedAttributes.isEmpty()) {
